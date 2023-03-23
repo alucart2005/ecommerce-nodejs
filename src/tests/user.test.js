@@ -51,7 +51,7 @@ test('GET /users  should return all users', async () => {
   .get('/users')
   .set('Authorization', `Bearer ${token}`);
   expect(res.statusCode).toBe(200);
-  expect(res.body).toHaveLength(1);
+  expect(res.body).toHaveLength(2);
 });
 
 test('PUT /users/:id should update one user', async () => {

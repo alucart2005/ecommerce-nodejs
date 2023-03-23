@@ -15,6 +15,8 @@ const Product = sequelize.define('product', {
         allowNull: false
     }
     //categoryID
+},{
+    timestamps: false
 });
 
 module.exports = Product;

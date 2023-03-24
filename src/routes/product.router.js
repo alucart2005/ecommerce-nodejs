@@ -14,6 +14,6 @@ productRouter.route('/:id')
     .put(verifyJWT, update);
 
 productRouter.route('/:id/categories')
-    .post(setProductCategory)
+    .post(verifyJWT, setProductCategory)
 
 module.exports = productRouter;

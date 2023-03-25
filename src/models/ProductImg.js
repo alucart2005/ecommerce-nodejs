@@ -6,11 +6,11 @@ const ProductImg = sequelize.define('productImg', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    filename: {
+		filename: {
         type: DataTypes.STRING,
         allowNull: false
     },
-},{
+}, {
     timestamps: false
 });
 

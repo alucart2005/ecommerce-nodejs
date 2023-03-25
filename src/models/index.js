@@ -6,6 +6,6 @@ const ProductImg = require("./ProductImg");
 Product.belongsToMany(Category, { through: "ProductCategory" }); // categoryID
 Category.belongsToMany(Product, { through: "ProductCategory" });
 
-ProductImg.belongsTo(Product); // productID
-Product.hasMany(ProductImg);
+ProductImg.belongsToMany(Product, {through: "ProductImgProduct"}); // productID
+Product.belongsToMany(ProductImg, {through: "ProductImgProduct"});
 

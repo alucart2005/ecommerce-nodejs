@@ -4,13 +4,14 @@ require('../models/User');
 require('../models/Category');
 require('../models/Product');
 require('../models/index');
+require('../models');
 
 const main = async() => {
     try{
         await sequelize.sync({ force: true });
         await User.create({
             firstName: "Test",
-            lastName: "Use",
+            lastName: "Use---",
             email: "test@gmail.com",
             password: "test1234",
             phone: "1234567890"
@@ -19,7 +20,7 @@ const main = async() => {
         process.exit();
     } catch(error){
         console.log(error);
-    }
+    } 
 }
 
 main();

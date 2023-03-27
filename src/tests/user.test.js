@@ -78,3 +78,4 @@ test('DELETE /users/:id should delete one user', async () => {
   .set('Authorization', `Bearer ${token}`);
   expect(res.statusCode).toBe(204);
 });
+

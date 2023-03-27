@@ -32,6 +32,7 @@ test('POST /users should create a user', async () => {
 test('GET /categories should return all categories', async () => {
   const res = await request(app)
     .get('/categories')
+    
   expect(res.statusCode).toBe(200);
   expect(res.body).toHaveLength(1);
 });

@@ -1,6 +1,7 @@
 const request = require('supertest');
 const app = require('../app');
 const Category = require('../models/Category');
+const ProductImg = require('../models/ProductImg');
 require('../models')
 
 let token;
@@ -67,12 +68,24 @@ test('POST /products/:id/categories', async () => {
     .post(`/products/${productID}/categories`)
     .send([newCategory.id])
     .set('Authorization', `Bearer ${token}`);
+    await newCategory.destroy();
     expect(res.statusCode).toBe(200);
     expect(res.body).toHaveLength(1);
     expect(res.body[0].name).toBe("Test Category");
     
 });
 
+test('POST /products/:id/images should set ProductImg', async () => {
+  const newImage = await ProductImg
+      .create({url: "http://localhost:8080/uploads/drone1.png", filename: "drone1.png"});
+  const res = await request(app)
+      .post(`/products/${productID}/product_images`)
+      .send([newImage.id])
+      .set('Authorization', `Bearer ${token}`);
+  await newImage.destroy();
+  expect(res.status).toBe(200);
+  expect(res.body).toHaveLength(1);
+});
 
 test('DELETE /products/:id', async () => {
     const res = await request(app)

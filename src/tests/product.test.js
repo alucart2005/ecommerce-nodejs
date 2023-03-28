@@ -16,7 +16,7 @@ beforeAll(async () => {
   token = res.body.token;
 });
 
-test('POST /products', async () => {
+test('POST /products should create one product', async () => {
     const newProduct = {
         title: "Test Product",
         description: "Test Description",
@@ -30,7 +30,7 @@ test('POST /products', async () => {
     expect(res.statusCode).toEqual(201);
 });
 
-test('GET /products', async () => {
+test('GET /products should return all products', async () => {
     const res = await request(app)
         .get('/products')
     expect(res.statusCode).toBe(200);
@@ -40,7 +40,7 @@ test('GET /products', async () => {
     expect(res.body[0].productImgs).toBeDefined();
 });
 
-test('GET /products/:id', async () => {
+test('GET /products/:id should return one product', async () => {
     const res = await request(app)
         .get(`/products/${productID}`)
     expect(res.statusCode).toBe(200);
@@ -62,7 +62,7 @@ test('PUT /products/:id', async () => {
   expect(res.statusCode).toBe(200);
 });
 
-test('POST /products/:id/categories', async () => {
+test('POST /products/:id/categories should return one product', async () => {
     const newCategory = await Category.create({name: "Test Category"});
     const res = await request(app)
     .post(`/products/${productID}/categories`)
@@ -87,7 +87,7 @@ test('POST /products/:id/images should set ProductImg', async () => {
   expect(res.body).toHaveLength(1);
 });
 
-test('DELETE /products/:id', async () => {
+test('DELETE /products/:id should return one product', async () => {
     const res = await request(app)
         .delete(`/products/${productID}`)
         .set('Authorization', `Bearer ${token}`);

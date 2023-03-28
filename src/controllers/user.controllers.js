@@ -1,7 +1,14 @@
-const catchError = require('../utils/catchError');
-const User = require('../models/User');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const catchError = require('../utils/catchError'); // Import the catchError function from the utils directory
+const User = require('../models/User'); // Import the User model from the models directory
+const bcrypt = require('bcrypt'); // Import the bcrypt library
+const jwt = require('jsonwebtoken'); // Import the jsonwebtoken library
+
+
+
+
+
+
+
 
 const getAll = catchError(async(req, res) => {
     const results = await User.findAll();

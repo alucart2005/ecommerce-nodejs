@@ -3,13 +3,6 @@ const User = require('../models/User'); // Import the User model from the models
 const bcrypt = require('bcrypt'); // Import the bcrypt library
 const jwt = require('jsonwebtoken'); // Import the jsonwebtoken library
 
-
-
-
-
-
-
-
 const getAll = catchError(async(req, res) => {
     const results = await User.findAll();
     return res.json(results);
